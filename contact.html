@@ -1,295 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Break the Beet - Get a quote for your luxury catering event">
-    <meta name="keywords" content="contact, catering quote, event planning, Break the Beet contact">
-
-    <title>Get a Quote - Break the Beet</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Contact Break the Beet - Get a quote for your luxury catering event">
+<meta name="keywords" content="contact,catering quote,event planning,Break the Beet contact">
+<title>Get a Quote - Break the Beet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navigation">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">BREAK THE BEET</a>
 
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+<nav class="navigation">
+<div class="nav-container">
+<a href="index.html" class="nav-logo">BREAK THE BEET</a>
+<button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+<ul class="nav-menu">
+<li><a href="index.html" class="nav-link">Home</a></li>
+<li><a href="menu.html" class="nav-link">Menu</a></li>
+<li><a href="services.html" class="nav-link">Services</a></li>
+<li><a href="chef.html" class="nav-link">Meet the Chef</a></li>
+<li><a href="gallery.html" class="nav-link">Gallery</a></li>
+<li><a href="contact.html" class="nav-link">Contact</a></li>
+</ul>
+</div>
+</nav>
 
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="menu.html" class="nav-link">Menu</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="chef.html" class="nav-link">Meet the Chef</a></li>
-                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<section class="section" style="margin-top:70px;padding-top:6rem">
+<div class="container">
+<h1 class="section-title">Get a Quote</h1>
+<p style="text-align:center;max-width:700px;margin:0 auto;font-size:1.1rem;color:var(--charcoal-light)">Let's start planning your unforgettable event. Fill out the form below and we'll be in touch shortly.</p>
+</div>
+</section>
 
-    <!-- Page Header -->
-    <section class="section" style="margin-top: 70px; padding-top: 6rem;">
-        <div class="container">
-            <h1 class="section-title">Get a Quote</h1>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: var(--color-charcoal-light);">
-                Let's start planning your unforgettable event. Fill out the form below and we'll be in touch shortly.
-            </p>
-        </div>
-    </section>
+<section class="section">
+<div class="container">
+<div class="contact-form-container">
 
-    <!-- Contact Form Section -->
-    <section class="section">
-        <div class="container">
-            <div class="contact-form-container">
-                <!-- Step Indicators -->
-                <div class="form-steps">
-                    <div class="step-indicator active" data-step="1">
-                        <div class="step-number">1</div>
-                        <span class="step-label">Your Info</span>
-                    </div>
-                    <div class="step-indicator" data-step="2">
-                        <div class="step-number">2</div>
-                        <span class="step-label">Event Details</span>
-                    </div>
-                </div>
+<div class="form-steps">
+<div class="step-indicator active" data-step="1">
+<div class="step-number">1</div>
+<span class="step-label">Your Info</span>
+</div>
+<div class="step-indicator" data-step="2">
+<div class="step-number">2</div>
+<span class="step-label">Event Details</span>
+</div>
+</div>
 
-                <!-- Multi-Step Form -->
-                <form id="contactForm" action="#" method="POST">
-                    <!-- Step 1: Basic Information -->
-                    <div class="form-step active" data-step="1">
-                        <div class="form-group">
-                            <label for="fullName" class="form-label">Full Name *</label>
-                            <input
-                                type="text"
-                                id="fullName"
-                                name="fullName"
-                                class="form-input"
-                                required
-                                placeholder="Enter your full name"
-                            >
-                        </div>
+<form id="contactForm">
 
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address *</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                class="form-input"
-                                required
-                                placeholder="your.email@example.com"
-                            >
-                        </div>
+<div class="form-step active" data-step="1">
+<div class="form-group">
+<label for="fullName" class="form-label">Full Name *</label>
+<input type="text" id="fullName" name="fullName" class="form-input" required placeholder="Enter your full name">
+</div>
+<div class="form-group">
+<label for="email" class="form-label">Email Address *</label>
+<input type="email" id="email" name="email" class="form-input" required placeholder="your.email@example.com">
+</div>
+<div class="form-group">
+<label for="phone" class="form-label">Phone Number</label>
+<input type="tel" id="phone" name="phone" class="form-input" placeholder="(123) 456-7890">
+</div>
+<div class="form-group">
+<label for="eventDate" class="form-label">Event Date *</label>
+<input type="date" id="eventDate" name="eventDate" class="form-input" required>
+</div>
+<div class="form-buttons">
+<button type="button" class="btn btn-primary btn-next">Next Step &rarr;</button>
+</div>
+</div>
 
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                class="form-input"
-                                placeholder="(123) 456-7890"
-                            >
-                        </div>
+<div class="form-step" data-step="2">
+<div class="form-group">
+<label for="guestCount" class="form-label">Number of Guests *</label>
+<select id="guestCount" name="guestCount" class="form-select" required>
+<option value="">Select guest count</option>
+<option value="1-10">1-10 guests</option>
+<option value="11-25">11-25 guests</option>
+<option value="26-50">26-50 guests</option>
+<option value="51-100">51-100 guests</option>
+<option value="100+">100+ guests</option>
+</select>
+</div>
+<div class="form-group">
+<label for="eventType" class="form-label">Event Type *</label>
+<select id="eventType" name="eventType" class="form-select" required>
+<option value="">Select event type</option>
+<option value="intimate-gathering">Intimate Gathering</option>
+<option value="private-chef">Private Chef Experience</option>
+<option value="corporate">Corporate Event</option>
+<option value="wedding">Wedding</option>
+<option value="birthday">Birthday Celebration</option>
+<option value="anniversary">Anniversary</option>
+<option value="holiday">Holiday Party</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="form-group">
+<label for="serviceType" class="form-label">Service Needed</label>
+<select id="serviceType" name="serviceType" class="form-select">
+<option value="">Select service type</option>
+<option value="full-catering">Full Catering Service</option>
+<option value="customized-menu">Customized Menu</option>
+<option value="private-chef">Private Chef Experience</option>
+<option value="consultation">Consultation</option>
+</select>
+</div>
+<div class="form-group">
+<label for="message" class="form-label">Additional Details</label>
+<textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your vision, dietary restrictions, preferences, or any special requests..."></textarea>
+</div>
+<div class="form-group">
+<label for="budget" class="form-label">Estimated Budget (Optional)</label>
+<select id="budget" name="budget" class="form-select">
+<option value="">Prefer not to say</option>
+<option value="under-1000">Under $1,000</option>
+<option value="1000-2500">$1,000 - $2,500</option>
+<option value="2500-5000">$2,500 - $5,000</option>
+<option value="5000-10000">$5,000 - $10,000</option>
+<option value="10000+">$10,000+</option>
+</select>
+</div>
+<div class="form-buttons">
+<button type="button" class="btn btn-secondary btn-prev">&larr; Previous</button>
+<button type="submit" class="btn btn-primary btn-submit">Submit Request</button>
+</div>
+</div>
 
-                        <div class="form-group">
-                            <label for="eventDate" class="form-label">Event Date *</label>
-                            <input
-                                type="date"
-                                id="eventDate"
-                                name="eventDate"
-                                class="form-input"
-                                required
-                            >
-                        </div>
+</form>
 
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-primary btn-next">
-                                Next Step →
-                            </button>
-                        </div>
-                    </div>
+<div class="form-success">
+<div style="font-size:3rem;margin-bottom:1.5rem">&check;</div>
+<h3>Thank You!</h3>
+<p style="font-size:1.1rem;margin-top:1rem;color:var(--charcoal-light)">Your request has been received. We'll get back to you within 24 hours to discuss your event.</p>
+</div>
 
-                    <!-- Step 2: Event Details -->
-                    <div class="form-step" data-step="2">
-                        <div class="form-group">
-                            <label for="guestCount" class="form-label">Number of Guests *</label>
-                            <select id="guestCount" name="guestCount" class="form-select" required>
-                                <option value="">Select guest count</option>
-                                <option value="1-10">1-10 guests</option>
-                                <option value="11-25">11-25 guests</option>
-                                <option value="26-50">26-50 guests</option>
-                                <option value="51-100">51-100 guests</option>
-                                <option value="100+">100+ guests</option>
-                            </select>
-                        </div>
+</div>
+</div>
+</section>
 
-                        <div class="form-group">
-                            <label for="eventType" class="form-label">Event Type *</label>
-                            <select id="eventType" name="eventType" class="form-select" required>
-                                <option value="">Select event type</option>
-                                <option value="intimate-gathering">Intimate Gathering</option>
-                                <option value="private-chef">Private Chef Experience</option>
-                                <option value="corporate">Corporate Event</option>
-                                <option value="wedding">Wedding</option>
-                                <option value="birthday">Birthday Celebration</option>
-                                <option value="anniversary">Anniversary</option>
-                                <option value="holiday">Holiday Party</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
+<section class="section" style="background-color:var(--gold-muted)">
+<div class="container">
+<h2 class="section-title">Other Ways to Reach Us</h2>
+<div style="max-width:800px;margin:3rem auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem;text-align:center">
+<div>
+<div style="font-size:2.5rem;margin-bottom:1rem">&#128222;</div>
+<h4 style="margin-bottom:0.5rem;font-size:1.1rem">Phone</h4>
+<p style="color:var(--charcoal-light)">placeholder - Phone number</p>
+</div>
+<div>
+<div style="font-size:2.5rem;margin-bottom:1rem">&#9993;</div>
+<h4 style="margin-bottom:0.5rem;font-size:1.1rem">Email</h4>
+<p style="color:var(--charcoal-light)">placeholder - Email address</p>
+</div>
+<div>
+<div style="font-size:2.5rem;margin-bottom:1rem">&#128205;</div>
+<h4 style="margin-bottom:0.5rem;font-size:1.1rem">Location</h4>
+<p style="color:var(--charcoal-light)">placeholder - City, State</p>
+</div>
+</div>
+</div>
+</section>
 
-                        <div class="form-group">
-                            <label for="serviceType" class="form-label">Service Needed</label>
-                            <select id="serviceType" name="serviceType" class="form-select">
-                                <option value="">Select service type</option>
-                                <option value="full-catering">Full Catering Service</option>
-                                <option value="customized-menu">Customized Menu</option>
-                                <option value="private-chef">Private Chef Experience</option>
-                                <option value="consultation">Consultation</option>
-                            </select>
-                        </div>
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<div class="footer-logo">Break the Beet</div>
+<p style="margin-top:1rem">placeholder - Short brand tagline or mission statement</p>
+</div>
+<div class="footer-section">
+<h4>Contact</h4>
+<p>placeholder - Phone number<br>placeholder - Email address</p>
+</div>
+<div class="footer-section">
+<h4>Address</h4>
+<p>placeholder - Street address<br>placeholder - City, State ZIP</p>
+</div>
+<div class="footer-section">
+<h4>Follow Us</h4>
+<div class="social-links">
+<a href="#" class="social-link" aria-label="Instagram" target="_blank"><span>IG</span></a>
+<a href="#" class="social-link" aria-label="Facebook" target="_blank"><span>FB</span></a>
+<a href="#" class="social-link" aria-label="Twitter" target="_blank"><span>TW</span></a>
+</div>
+</div>
+</div>
+<div class="footer-bottom"><p>&copy; 2024 Break the Beet. All rights reserved.</p></div>
+</div>
+</footer>
 
-                        <div class="form-group">
-                            <label for="message" class="form-label">Additional Details</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                class="form-textarea"
-                                placeholder="Tell us about your vision, dietary restrictions, preferences, or any special requests..."
-                            ></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="budget" class="form-label">Estimated Budget (Optional)</label>
-                            <select id="budget" name="budget" class="form-select">
-                                <option value="">Prefer not to say</option>
-                                <option value="under-1000">Under $1,000</option>
-                                <option value="1000-2500">$1,000 - $2,500</option>
-                                <option value="2500-5000">$2,500 - $5,000</option>
-                                <option value="5000-10000">$5,000 - $10,000</option>
-                                <option value="10000+">$10,000+</option>
-                            </select>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-secondary btn-prev">
-                                ← Previous
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-submit">
-                                Submit Request
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- Success Message (Hidden by default) -->
-                <div class="form-success">
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem;">✓</div>
-                    <h3>Thank You!</h3>
-                    <p style="font-size: 1.1rem; margin-top: 1rem; color: var(--color-charcoal-light);">
-                        Your request has been received. We'll get back to you within 24 hours to discuss your event.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Information Section -->
-    <section class="section" style="background-color: var(--color-gold-muted);">
-        <div class="container">
-            <h2 class="section-title">Other Ways to Reach Us</h2>
-
-            <div style="max-width: 800px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: center;">
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📞</div>
-                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Phone</h4>
-                    <p style="color: var(--color-charcoal-light);">
-                        [PLACEHOLDER: Phone number]
-                    </p>
-                </div>
-
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">✉️</div>
-                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Email</h4>
-                    <p style="color: var(--color-charcoal-light);">
-                        [PLACEHOLDER: Email address]
-                    </p>
-                </div>
-
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📍</div>
-                    <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Location</h4>
-                    <p style="color: var(--color-charcoal-light);">
-                        [PLACEHOLDER: City, State]
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">Break the Beet</div>
-                    <p style="margin-top: 1rem;">
-                        [PLACEHOLDER: Short brand tagline or mission statement]
-                    </p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>
-                        [PLACEHOLDER: Phone number]<br>
-                        [PLACEHOLDER: Email address]
-                    </p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Address</h4>
-                    <p>
-                        [PLACEHOLDER: Street address]<br>
-                        [PLACEHOLDER: City, State ZIP]
-                    </p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="[PLACEHOLDER: Instagram URL]" class="social-link" aria-label="Instagram" target="_blank">
-                            <span>IG</span>
-                        </a>
-                        <a href="[PLACEHOLDER: Facebook URL]" class="social-link" aria-label="Facebook" target="_blank">
-                            <span>FB</span>
-                        </a>
-                        <a href="[PLACEHOLDER: Twitter URL]" class="social-link" aria-label="Twitter" target="_blank">
-                            <span>TW</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 Break the Beet. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

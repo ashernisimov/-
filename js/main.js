@@ -1,290 +1,213 @@
-// Break the Beet - Main JavaScript
+// Break the Beet - Optimized Main JavaScript
+(function(){'use strict';
 
-// ===========================
-// Mobile Navigation Toggle
-// ===========================
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+// ===== Navigation Toggle =====
+const initNavigation=()=>{
+  const toggle=document.querySelector('.nav-toggle');
+  const menu=document.querySelector('.nav-menu');
+  const links=document.querySelectorAll('.nav-link');
 
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+  if(!toggle||!menu)return;
 
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-    }
+  toggle.addEventListener('click',()=>{
+    toggle.classList.toggle('active');
+    menu.classList.toggle('active');
+  });
 
-    // Set active nav link based on current page
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-            link.classList.add('active');
-        }
+  links.forEach(link=>{
+    link.addEventListener('click',()=>{
+      toggle.classList.remove('active');
+      menu.classList.remove('active');
     });
-});
+  });
 
-// ===========================
-// Multi-Step Contact Form
-// ===========================
-const ContactForm = {
-    currentStep: 1,
-    totalSteps: 2,
-    formData: {},
-
-    init: function() {
-        this.form = document.getElementById('contactForm');
-        if (!this.form) return;
-
-        this.steps = document.querySelectorAll('.form-step');
-        this.indicators = document.querySelectorAll('.step-indicator');
-        this.nextBtns = document.querySelectorAll('.btn-next');
-        this.prevBtns = document.querySelectorAll('.btn-prev');
-        this.submitBtn = document.querySelector('.btn-submit');
-
-        this.bindEvents();
-        this.showStep(1);
-    },
-
-    bindEvents: function() {
-        const self = this;
-
-        // Next button clicks
-        this.nextBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (self.validateStep(self.currentStep)) {
-                    self.saveStepData(self.currentStep);
-                    self.nextStep();
-                }
-            });
-        });
-
-        // Previous button clicks
-        this.prevBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                self.prevStep();
-            });
-        });
-
-        // Form submission
-        if (this.submitBtn) {
-            this.submitBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (self.validateStep(self.currentStep)) {
-                    self.saveStepData(self.currentStep);
-                    self.submitForm();
-                }
-            });
-        }
-    },
-
-    showStep: function(step) {
-        // Hide all steps
-        this.steps.forEach(s => s.classList.remove('active'));
-
-        // Show current step
-        const currentStepElement = document.querySelector(`[data-step="${step}"]`);
-        if (currentStepElement) {
-            currentStepElement.classList.add('active');
-        }
-
-        // Update indicators
-        this.indicators.forEach((indicator, index) => {
-            indicator.classList.remove('active', 'completed');
-            if (index + 1 < step) {
-                indicator.classList.add('completed');
-            } else if (index + 1 === step) {
-                indicator.classList.add('active');
-            }
-        });
-
-        this.currentStep = step;
-    },
-
-    nextStep: function() {
-        if (this.currentStep < this.totalSteps) {
-            this.showStep(this.currentStep + 1);
-        }
-    },
-
-    prevStep: function() {
-        if (this.currentStep > 1) {
-            this.showStep(this.currentStep - 1);
-        }
-    },
-
-    validateStep: function(step) {
-        const currentStepElement = document.querySelector(`[data-step="${step}"]`);
-        if (!currentStepElement) return false;
-
-        const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
-        let isValid = true;
-
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                isValid = false;
-                input.style.borderColor = '#e74c3c';
-
-                // Reset border color on input
-                input.addEventListener('input', function() {
-                    input.style.borderColor = '';
-                }, { once: true });
-            }
-        });
-
-        // Email validation for step 1
-        if (step === 1) {
-            const emailInput = currentStepElement.querySelector('input[type="email"]');
-            if (emailInput && emailInput.value) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(emailInput.value)) {
-                    isValid = false;
-                    emailInput.style.borderColor = '#e74c3c';
-                }
-            }
-        }
-
-        if (!isValid) {
-            this.showError('Please fill in all required fields correctly.');
-        }
-
-        return isValid;
-    },
-
-    saveStepData: function(step) {
-        const currentStepElement = document.querySelector(`[data-step="${step}"]`);
-        if (!currentStepElement) return;
-
-        const inputs = currentStepElement.querySelectorAll('input, select, textarea');
-        inputs.forEach(input => {
-            this.formData[input.name] = input.value;
-        });
-    },
-
-    submitForm: function() {
-        // In a real application, this would send data to a server
-        console.log('Form submitted with data:', this.formData);
-
-        // Show success message
-        this.form.style.display = 'none';
-        const successMessage = document.querySelector('.form-success');
-        if (successMessage) {
-            successMessage.classList.add('show');
-        }
-
-        // Reset form after 3 seconds (optional)
-        setTimeout(() => {
-            this.resetForm();
-        }, 5000);
-    },
-
-    resetForm: function() {
-        this.form.reset();
-        this.formData = {};
-        this.showStep(1);
-
-        const successMessage = document.querySelector('.form-success');
-        if (successMessage) {
-            successMessage.classList.remove('show');
-        }
-        this.form.style.display = 'block';
-    },
-
-    showError: function(message) {
-        // Simple alert for now - could be replaced with a nicer notification
-        alert(message);
+  // Set active link
+  const currentPage=window.location.pathname.split('/').pop()||'index.html';
+  links.forEach(link=>{
+    if(link.getAttribute('href')===currentPage||(currentPage===''&&link.getAttribute('href')==='index.html')){
+      link.classList.add('active');
     }
+  });
 };
 
-// Initialize form when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    ContactForm.init();
-});
+// ===== Multi-Step Contact Form =====
+const initContactForm=()=>{
+  const form=document.getElementById('contactForm');
+  if(!form)return;
 
-// ===========================
-// Smooth Scroll for Anchor Links
-// ===========================
-document.addEventListener('DOMContentLoaded', function() {
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  let currentStep=1;
+  const totalSteps=2;
+  const formData={};
 
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#' && href !== '') {
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    const offsetTop = target.offsetTop - 80; // Account for fixed nav
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
+  const steps=document.querySelectorAll('.form-step');
+  const indicators=document.querySelectorAll('.step-indicator');
+  const nextBtns=document.querySelectorAll('.btn-next');
+  const prevBtns=document.querySelectorAll('.btn-prev');
+  const submitBtn=document.querySelector('.btn-submit');
+
+  const showStep=step=>{
+    steps.forEach(s=>s.classList.remove('active'));
+    const currentStepEl=document.querySelector(`[data-step="${step}"]`);
+    if(currentStepEl)currentStepEl.classList.add('active');
+
+    indicators.forEach((ind,idx)=>{
+      ind.classList.remove('active','completed');
+      if(idx+1<step)ind.classList.add('completed');
+      else if(idx+1===step)ind.classList.add('active');
     });
-});
 
-// ===========================
-// Gallery Image Modal (Optional Enhancement)
-// ===========================
-const GalleryModal = {
-    init: function() {
-        const galleryItems = document.querySelectorAll('.gallery-item');
+    currentStep=step;
+  };
 
-        galleryItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                if (img && img.src) {
-                    // Simple implementation - could be enhanced with a proper lightbox
-                    window.open(img.src, '_blank');
-                }
-            });
-        });
+  const validateStep=step=>{
+    const stepEl=document.querySelector(`.form-step[data-step="${step}"]`);
+    if(!stepEl)return false;
+
+    const inputs=stepEl.querySelectorAll('input[required],select[required],textarea[required]');
+    let isValid=true;
+
+    inputs.forEach(input=>{
+      if(!input.value.trim()){
+        isValid=false;
+        input.style.borderColor='#e74c3c';
+        input.addEventListener('input',()=>input.style.borderColor='',{once:true});
+      }
+    });
+
+    // Email validation
+    if(step===1){
+      const emailInput=stepEl.querySelector('input[type="email"]');
+      if(emailInput&&emailInput.value&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)){
+        isValid=false;
+        emailInput.style.borderColor='#e74c3c';
+      }
     }
+
+    if(!isValid)alert('Please fill in all required fields correctly.');
+    return isValid;
+  };
+
+  const saveStepData=step=>{
+    const stepEl=document.querySelector(`.form-step[data-step="${step}"]`);
+    if(!stepEl)return;
+
+    const inputs=stepEl.querySelectorAll('input,select,textarea');
+    inputs.forEach(input=>formData[input.name]=input.value);
+  };
+
+  const submitForm=()=>{
+    console.log('Form submitted:',formData);
+
+    form.style.display='none';
+    const successMsg=document.querySelector('.form-success');
+    if(successMsg)successMsg.classList.add('show');
+
+    setTimeout(()=>{
+      form.reset();
+      showStep(1);
+      if(successMsg)successMsg.classList.remove('show');
+      form.style.display='block';
+    },5000);
+  };
+
+  nextBtns.forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.preventDefault();
+      if(validateStep(currentStep)){
+        saveStepData(currentStep);
+        if(currentStep<totalSteps)showStep(currentStep+1);
+      }
+    });
+  });
+
+  prevBtns.forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.preventDefault();
+      if(currentStep>1)showStep(currentStep-1);
+    });
+  });
+
+  if(submitBtn){
+    submitBtn.addEventListener('click',e=>{
+      e.preventDefault();
+      if(validateStep(currentStep)){
+        saveStepData(currentStep);
+        submitForm();
+      }
+    });
+  }
+
+  showStep(1);
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    GalleryModal.init();
-});
+// ===== Sticky CTA =====
+const initStickyCTA=()=>{
+  const cta=document.querySelector('.sticky-cta');
+  if(!cta)return;
 
-// ===========================
-// Sticky CTA Visibility
-// ===========================
-document.addEventListener('DOMContentLoaded', function() {
-    const stickyCta = document.querySelector('.sticky-cta');
-    if (!stickyCta) return;
+  let ticking=false;
 
-    let lastScroll = 0;
-    const scrollThreshold = 300;
+  const updateCTA=()=>{
+    const scrolled=window.pageYOffset;
+    if(scrolled>300){
+      cta.classList.add('visible');
+    }else{
+      cta.classList.remove('visible');
+    }
+    ticking=false;
+  };
 
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
+  window.addEventListener('scroll',()=>{
+    if(!ticking){
+      window.requestAnimationFrame(updateCTA);
+      ticking=true;
+    }
+  });
+};
 
-        if (currentScroll > scrollThreshold) {
-            stickyCta.style.opacity = '1';
-            stickyCta.style.pointerEvents = 'auto';
-        } else {
-            stickyCta.style.opacity = '0';
-            stickyCta.style.pointerEvents = 'none';
+// ===== Smooth Scroll =====
+const initSmoothScroll=()=>{
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',function(e){
+      const href=this.getAttribute('href');
+      if(href!=='#'&&href!==''){
+        const target=document.querySelector(href);
+        if(target){
+          e.preventDefault();
+          window.scrollTo({
+            top:target.offsetTop-80,
+            behavior:'smooth'
+          });
         }
-
-        lastScroll = currentScroll;
+      }
     });
+  });
+};
 
-    // Initially hide
-    stickyCta.style.opacity = '0';
-    stickyCta.style.transition = 'opacity 0.3s ease';
-});
+// ===== Gallery Modal =====
+const initGallery=()=>{
+  document.querySelectorAll('.gallery-item').forEach(item=>{
+    item.addEventListener('click',function(){
+      const img=this.querySelector('img');
+      if(img&&img.src)window.open(img.src,'_blank');
+    });
+  });
+};
+
+// ===== Initialize All =====
+const init=()=>{
+  initNavigation();
+  initContactForm();
+  initStickyCTA();
+  initSmoothScroll();
+  initGallery();
+};
+
+// Run on DOM ready
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',init);
+}else{
+  init();
+}
+
+})();
