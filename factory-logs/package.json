@@ -1,0 +1,19 @@
+{
+  "name": "factory-event-log-system",
+  "version": "1.0.0",
+  "description": "Factory event log system to track incidents, maintenance, and safety events",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "init-db": "node backend/init-db.js"
+  },
+  "keywords": ["factory", "event-log", "incident-tracking", "maintenance", "safety"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "better-sqlite3": "^9.2.2",
+    "cors": "^2.8.5"
+  }
+}
